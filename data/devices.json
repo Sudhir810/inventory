@@ -1,0 +1,26 @@
+export var devices = [
+  {
+    "name": "iPad 2 White (7.1.X)",
+    "lastBorrowedOn":"",
+    "everythingIntact":true,
+    "comments":"Everything is in the device box."
+  },
+  {
+    "name": "iPad 2( 9.3.3) Black",
+    "lastBorrowedOn":"",
+    "everythingIntact":true,
+    "comments":"Everything is in the device box."
+  },
+  {
+    "name": "iPad 3(8.4) White",
+    "lastBorrowedOn":"",
+    "everythingIntact":true,
+    "comments":"Everything is in the device box."
+  },
+  {
+    "name": "iPad 3(i9.1.1) White",
+    "lastBorrowedOn":"",
+    "everythingIntact":true,
+    "comments":"Everything is in the device box."
+  }
+]
