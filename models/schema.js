@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-const url = "mongodb://sudhirtaneja:IknowThat1@ds231374.mlab.com:31374/inventory";
-const Schema = mongoose.Schema;
+const url      = "mongodb://sudhirtaneja:IknowThat1@ds231374.mlab.com:31374/inventory";
+const Schema   = mongoose.Schema;
 
 var userSchema = new Schema({
   name: {
@@ -26,7 +26,10 @@ var deviceSchema = new Schema({
   lastBorrowedOn: {
     type: Date
   },
-  lastBorrowedBy: userSchema,
+  lastBorrowedBy: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Users'
+  },
   everythingIntact:{
     type: Boolean
   },
@@ -56,5 +59,5 @@ module.exports = {
   Devices,
   Users,
   BorrowDetails,
-  url  
+  url
 }
