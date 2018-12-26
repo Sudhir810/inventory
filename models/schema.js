@@ -28,7 +28,7 @@ var deviceSchema = new Schema({
   },
   lastBorrowedBy: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Users'
+    ref: 'User'
   },
   everythingIntact:{
     type: Boolean
@@ -41,9 +41,15 @@ var deviceSchema = new Schema({
 });
 
 var borrowSchema = new Schema({
-  user: userSchema,
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User'
+  },
   borrow:[{
-    device: deviceSchema,
+    device: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Device'
+    },
     borrowed: Date,
     returned: Date,
   }]

@@ -6,11 +6,13 @@ const http     = require('http');
 
 const mongodb      = require('./models/schema');
 const usersRouter  = require('./routes/usersRoute');
-const deviceRouter = require('./routes/deviceRoute')
+const deviceRouter = require('./routes/deviceRoute');
+const borrowRouter = require('./routes/borrowRoute');
+
 const port         = 3000;
 const hostname     = 'localhost';
-const connect      = mongoose.connect(mongodb.url)
 
+const connect      = mongoose.connect(mongodb.url);
 connect.then((db) =>{
   console.log("Connected to database");
 }, (err) => { console.log(err); });
@@ -21,6 +23,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended:false}));
 app.use('/users', usersRouter);
 app.use('/devices',deviceRouter);
+app.use('/borrow', borrowRouter);
 
 const server = http.createServer(app);
 server.listen(port, hostname, () =>{
