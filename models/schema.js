@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const url      = "mongodb://sudhirtaneja:IknowThat1@ds231374.mlab.com:31374/inventory";
 const Schema   = mongoose.Schema;
 
 var userSchema = new Schema({
@@ -65,5 +64,4 @@ module.exports = {
   Devices,
   Users,
   BorrowDetails,
-  url
 }

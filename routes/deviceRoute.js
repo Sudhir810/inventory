@@ -2,12 +2,13 @@ const express     = require('express');
 const bodyParser = require('body-parser');
 
 const mongoose   = require('mongoose');
+const cors       = require('./cors');
 const schema     = require('../models/schema');
 
 var deviceRouter = express.Router();
 
 deviceRouter.route('/')
-.get((req,res,next) => {
+.get(cors.cors, (req,res,next) => {
   schema.Devices.find({})
   .populate('lastBorrowedBy')
   .then((devices) =>{
@@ -35,7 +36,7 @@ deviceRouter.route('/')
 })
 
 deviceRouter.route('/:deviceId')
-.get((req, res, next) =>{
+.get(cors.cors, (req, res, next) =>{
   schema.Devices.findById(req.params.deviceId)
   .then((device) =>{
     res.statusCode = 200;

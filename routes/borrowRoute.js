@@ -1,20 +1,22 @@
-const express = require('express');
+const express    = require('express');
 const bodyParser = require('body-parser');
 
-const mongoose = require('mongoose');
+const mongoose   = require('mongoose');
+const cors       = require('./cors');
 var schema = require('../models/schema.js');
 
 const borrowRouter = express.Router();
 
 borrowRouter.route('/')
-.get((req, res, next) =>{
-  schema.BorrowDetails.find({})
+.get(cors.cors, (req, res, next) =>{
+  var result;
+  schema.BorrowDetails.find()
   .populate('user', 'name')
   .populate('borrow.device', 'name')
-  .then((borrow) =>{
+  .then((data) =>{
     res.statusCode = 200;
     res.setHeader('Content-Type', 'application/json');
-    res.json(borrow);
+    res.json(data);
   })
 })
 .post((req, res, next) =>{
